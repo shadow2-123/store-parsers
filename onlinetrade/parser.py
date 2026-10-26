@@ -10,13 +10,6 @@ async def parse(query: str) -> ParseResult:
     await asyncio.sleep(2)
 
     return ParseResult(
-        status=ResultStatus.found,
-        attempts=1,
-        offers=[
-            ParserOffer(
-                name=f"DNS: {query}",
-                price=Decimal("15990.00"),
-                url="https://www.dns-shop.ru/",
-            ),
-        ],
+        status=ResultStatus.not_found,
+        attempts=1
     )

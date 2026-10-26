@@ -1,22 +1,12 @@
-import asyncio
-from decimal import Decimal
+from dns_connector.server import dns_search
 
-from common.db.models import ResultStatus
+from common.connector_adapter import parse_with_connector
 from common.queue_worker import ParseResult
-from common.schemas import ParserOffer
 
 
 async def parse(query: str) -> ParseResult:
-    await asyncio.sleep(2)
-
-    return ParseResult(
-        status=ResultStatus.found,
-        attempts=1,
-        offers=[
-            ParserOffer(
-                name=f"DNS: {query}",
-                price=Decimal("15990.00"),
-                url="https://www.dns-shop.ru/",
-            ),
-        ],
+    return await parse_with_connector(
+        query=query,
+        search=dns_search,
+        store="dns"
     )

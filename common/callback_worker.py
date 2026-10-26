@@ -19,7 +19,10 @@ class CallbackWorker:
         session_factory: async_sessionmaker[AsyncSession],
     ):
         self.session_factory = session_factory
-        self.client = httpx.AsyncClient(timeout=10.0)
+        self.client = httpx.AsyncClient(
+            timeout=10.0,
+            trust_env=False,
+        )
 
         self.event = asyncio.Event()
         self.worker: asyncio.Task | None = None

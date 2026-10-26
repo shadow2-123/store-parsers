@@ -12,4 +12,13 @@ dependencies = [
   "httpx",
   "openpyxl",
   "python-multipart>=0.0.32",
+
+  "dns-connector",
+  "citilink-connector",
 ]
+
+
+[tool.uv.sources]
+dns-connector = { path = "../ru-marketplace-mcp/packages/dns-connector", editable = true }
+citilink-connector = { path = "../ru-marketplace-mcp/packages/citilink-connector", editable = true }
+mcp-core = { path = "../ru-marketplace-mcp/packages/mcp-core", editable = true }
